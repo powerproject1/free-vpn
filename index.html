@@ -20,16 +20,6 @@ align-items:center;
 padding:20px;
 }
 
-.bg{
-position:fixed;
-inset:0;
-background:
-radial-gradient(circle at top left, rgba(124,58,237,.25), transparent 45%),
-radial-gradient(circle at bottom right, rgba(59,130,246,.20), transparent 45%);
-filter:blur(90px);
-z-index:-1;
-}
-
 .card{
 width:100%;
 max-width:900px;
@@ -38,139 +28,78 @@ border:1px solid rgba(255,255,255,.08);
 border-radius:28px;
 padding:28px;
 backdrop-filter:blur(25px);
-box-shadow:0 30px 90px rgba(0,0,0,.8);
 }
 
-.top{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:20px;
-}
-
-.badge{
-padding:8px 14px;
-border-radius:999px;
-background:rgba(255,255,255,.05);
-border:1px solid rgba(255,255,255,.1);
-font-weight:700;
-}
-
-.status{
-display:flex;
-align-items:center;
-gap:10px;
-font-weight:800;
-}
-
-.dot{
-width:10px;
-height:10px;
-border-radius:50%;
-background:#00ff88;
-box-shadow:0 0 15px #00ff88;
-}
-
-h1{
-font-size:44px;
-margin:0;
-font-weight:900;
-}
-
-.subtitle{
-color:#9ca3af;
-margin-top:6px;
-margin-bottom:20px;
-}
+h1{margin:0;font-size:40px;font-weight:900}
+.subtitle{color:#9ca3af;margin:10px 0}
 
 .preview{
 background:#0a0a0a;
 border:1px solid rgba(255,255,255,.08);
-border-radius:18px;
-padding:18px;
-max-height:260px;
+border-radius:16px;
+padding:16px;
+max-height:300px;
 overflow:auto;
 }
 
 pre{
+white-space:pre-wrap;
 font-size:12px;
 color:#38bdf8;
-white-space:pre-wrap;
 }
 
 button{
-margin-top:18px;
+margin-top:15px;
 width:100%;
-padding:18px;
+padding:16px;
 border:none;
-border-radius:18px;
+border-radius:14px;
 cursor:pointer;
-font-size:18px;
-font-weight:900;
-color:#fff;
+font-weight:800;
 background:linear-gradient(135deg,#7c3aed,#2563eb);
+color:#fff;
 }
 
 #toast{
 position:fixed;
 bottom:30px;
 left:50%;
-transform:translateX(-50%) translateY(40px);
+transform:translateX(-50%);
 background:rgba(0,0,0,.85);
-padding:12px 18px;
-border-radius:14px;
-border:1px solid rgba(255,255,255,.1);
+padding:10px 16px;
+border-radius:12px;
 opacity:0;
 transition:.3s;
-font-weight:800;
+border:1px solid rgba(255,255,255,.1);
 }
 
 #toast.show{
 opacity:1;
-transform:translateX(-50%) translateY(0);
+transform:translateX(-50%) translateY(-5px);
 }
 </style>
 </head>
 
 <body>
 
-<div class="bg"></div>
-
 <div class="card">
-
-<div class="top">
-<div class="status">
-<div class="dot"></div>
-<span>ONLINE</span>
-</div>
-
-<div class="badge">BOOSTX VPN</div>
-</div>
-
 <h1>BOOSTX</h1>
 <div class="subtitle">Premium Config</div>
-
-<div class="subtitle">📦 Конфигурация (JSON)</div>
 
 <div class="preview">
 <pre id="preview"></pre>
 </div>
 
-<div class="subtitle">
-Сервер: <span id="server"></span>
-</div>
-
 <button onclick="copyConfig()">📋 СКОПИРОВАТЬ</button>
-
 </div>
 
 <div id="toast">СКОПИРОВАНО</div>
 
 <script>
 
-// ===== CONFIG =====
+// ===== FULL ORIGINAL JSON (NO CHANGES) =====
 const config = {
-  {"dns": {
+  "dns": {
     "queryStrategy": "UseIPv4",
     "servers": [
       "8.8.8.8",
@@ -229,12 +158,12 @@ const config = {
     "probeInterval": "60m",
     "probeURL": "https://cloudflare.com/cdn-cgi/trace",
     "subjectSelector": [
-      "proxy-youtube-604",
-      "proxy-youtube-389",
-      "proxy-youtube-385",
-      "proxy-vless-reality-783",
-      "proxy-vless-reality-328",
-      "proxy-vless-reality-623"
+      "proxy-youtube-510",
+      "proxy-youtube-509",
+      "proxy-youtube-736",
+      "proxy-vless-reality-314",
+      "proxy-vless-reality-634",
+      "proxy-vless-reality-792"
     ]
   },
   "outbounds": [
@@ -243,7 +172,7 @@ const config = {
       "settings": {
         "vnext": [
           {
-            "address": "201.51.7.82",
+            "address": "185.185.142.88",
             "port": 443,
             "users": [
               {
@@ -268,7 +197,7 @@ const config = {
         },
         "security": "reality"
       },
-      "tag": "proxy-vless-reality-783",
+      "tag": "proxy-vless-reality-314",
       "targetStrategy": "ForceIPv4"
     },
     {
@@ -276,7 +205,7 @@ const config = {
       "settings": {
         "vnext": [
           {
-            "address": "201.51.6.59",
+            "address": "201.51.7.8",
             "port": 443,
             "users": [
               {
@@ -301,7 +230,7 @@ const config = {
         },
         "security": "reality"
       },
-      "tag": "proxy-vless-reality-328",
+      "tag": "proxy-vless-reality-634",
       "targetStrategy": "ForceIPv4"
     },
     {
@@ -309,7 +238,7 @@ const config = {
       "settings": {
         "vnext": [
           {
-            "address": "201.51.8.11",
+            "address": "193.39.168.167",
             "port": 443,
             "users": [
               {
@@ -334,7 +263,7 @@ const config = {
         },
         "security": "reality"
       },
-      "tag": "proxy-vless-reality-623",
+      "tag": "proxy-vless-reality-792",
       "targetStrategy": "ForceIPv4"
     },
     {
@@ -342,7 +271,7 @@ const config = {
       "settings": {
         "vnext": [
           {
-            "address": "147.45.213.95",
+            "address": "217.149.25.116",
             "port": 443,
             "users": [
               {
@@ -367,7 +296,7 @@ const config = {
         },
         "security": "reality"
       },
-      "tag": "proxy-youtube-604",
+      "tag": "proxy-youtube-510",
       "targetStrategy": "ForceIPv4"
     },
     {
@@ -375,7 +304,7 @@ const config = {
       "settings": {
         "vnext": [
           {
-            "address": "72.56.32.211",
+            "address": "87.249.36.136",
             "port": 443,
             "users": [
               {
@@ -400,7 +329,7 @@ const config = {
         },
         "security": "reality"
       },
-      "tag": "proxy-youtube-389",
+      "tag": "proxy-youtube-509",
       "targetStrategy": "ForceIPv4"
     },
     {
@@ -408,7 +337,7 @@ const config = {
       "settings": {
         "vnext": [
           {
-            "address": "185.197.75.72",
+            "address": "186.246.8.159",
             "port": 443,
             "users": [
               {
@@ -433,7 +362,7 @@ const config = {
         },
         "security": "reality"
       },
-      "tag": "proxy-youtube-385",
+      "tag": "proxy-youtube-736",
       "targetStrategy": "ForceIPv4"
     },
     {
@@ -441,7 +370,7 @@ const config = {
       "settings": {
         "vnext": [
           {
-            "address": "201.51.8.11",
+            "address": "201.51.7.8",
             "port": 443,
             "users": [
               {
@@ -479,40 +408,36 @@ const config = {
       "tag": "block"
     }
   ],
-  "remarks": "🇩🇪 BOOSTX Германия",
+
+  "remarks": "🇩🇪 Германия",
+
   "routing": {
     "balancers": [
       {
-        "fallbackTag": "proxy-vless-reality-783",
+        "fallbackTag": "proxy-vless-reality-314",
         "selector": [
-          "proxy-vless-reality-783",
-          "proxy-vless-reality-328",
-          "proxy-vless-reality-623"
+          "proxy-vless-reality-314",
+          "proxy-vless-reality-634",
+          "proxy-vless-reality-792"
         ],
-        "strategy": {
-          "type": "roundRobin"
-        },
+        "strategy": { "type": "roundRobin" },
         "tag": "balancer"
       },
       {
-        "fallbackTag": "proxy-youtube-604",
+        "fallbackTag": "proxy-youtube-510",
         "selector": [
-          "proxy-youtube-604",
-          "proxy-youtube-389",
-          "proxy-youtube-385"
+          "proxy-youtube-510",
+          "proxy-youtube-509",
+          "proxy-youtube-736"
         ],
-        "strategy": {
-          "type": "roundRobin"
-        },
+        "strategy": { "type": "roundRobin" },
         "tag": "balancer-youtube"
       }
     ],
     "domainStrategy": "IPIfNonMatch",
     "rules": [
       {
-        "domain": [
-          "geosite:youtube"
-        ],
+        "domain": ["geosite:youtube"],
         "network": "udp",
         "outboundTag": "block",
         "port": "443",
@@ -520,9 +445,7 @@ const config = {
       },
       {
         "balancerTag": "balancer-youtube",
-        "domain": [
-          "geosite:youtube"
-        ]
+        "domain": ["geosite:youtube"]
       },
       {
         "domain": [
@@ -538,136 +461,19 @@ const config = {
         "network": "udp",
         "outboundTag": "block",
         "port": "443"
-      },
-      {
-        "domain": [
-          "domain:api.hirovpn.com",
-          "domain:downloadhiro.app",
-          "domain:sellflow.org",
-          "domain:newlenta24.online",
-          "domain:infomagazine.space",
-          "domain:rocketnews.site",
-          "domain:pitertv24.ru",
-          "domain:moscownews24.ru",
-          "domain:sportvideo24.ru",
-          "domain:anker-beton.ru",
-          "domain:krym-toury.ru",
-          "domain:tvnews7.ru",
-          "domain:hirovpnfreetgproxy.ru"
-        ],
-        "outboundTag": "direct"
-      },
-      {
-        "balancerTag": "balancer",
-        "domain": [
-          "geosite:whatsapp",
-          "geosite:discord"
-        ]
-      },
-      {
-        "balancerTag": "balancer",
-        "ip": [
-          "geoip:telegram"
-        ]
-      },
-      {
-        "balancerTag": "balancer",
-        "network": "udp",
-        "port": "3478-3497,4244,5242-5243,7985"
-      },
-      {
-        "balancerTag": "balancer",
-        "domain": [
-          "domain:payload.network",
-          "domain:2ip.ru",
-          "domain:2ip.to",
-          "domain:myip.ru",
-          "domain:internet.yandex.ru",
-          "domain:ip.nic.ru",
-          "domain:reg.ru",
-          "domain:pr-cy.ru",
-          "domain:2whois.ru",
-          "domain:yoip.ru",
-          "domain:ipsee.ru",
-          "domain:ip-ping.ru",
-          "domain:sweb.ru"
-        ]
-      },
-      {
-        "domain": [
-          "domain:2ch.hk",
-          "domain:2ch.org",
-          "domain:2ch.su"
-        ],
-        "outboundTag": "direct"
-      },
-      {
-        "domain": [
-          "domain:ru"
-        ],
-        "ip": [
-          "geoip:ru",
-          "geoip:private"
-        ],
-        "outboundTag": "direct"
-      },
-      {
-        "balancerTag": "balancer",
-        "port": "22,25,53,80,110,123,143,443,465,587,993,995,5222,5223,5228,8000,8080,8443",
-        "type": "field"
-      },
-      {
-        "balancerTag": "balancer",
-        "network": "tcp,udp",
-        "type": "field"
       }
     ]
   }
-}
-const FULL = JSON.stringify(config, null, 2);
+};
 
-document.getElementById("preview").innerText = FULL;
+document.getElementById("preview").textContent =
+  JSON.stringify(config, null, 2);
 
-document.getElementById("server").innerText =
-  config?.outbounds?.[0]?.settings?.vnext?.[0]?.address || "—";
-
-// ===== FIX COPY =====
-function copyConfig() {
-  const text = FULL;
-
-  const fallback = () => {
-    const ta = document.createElement("textarea");
-    ta.value = text;
-    ta.style.position = "fixed";
-    ta.style.left = "-9999px";
-    document.body.appendChild(ta);
-    ta.select();
-    try {
-      document.execCommand("copy");
-      showToast("СКОПИРОВАНО");
-    } catch {
-      showToast("ОШИБКА");
-    }
-    document.body.removeChild(ta);
-  };
-
-  if (navigator.clipboard && window.isSecureContext) {
-    navigator.clipboard.writeText(text)
-      .then(() => showToast("СКОПИРОВАНО"))
-      .catch(fallback);
-  } else {
-    fallback();
-  }
-}
-
-function showToast(text) {
-  const t = document.getElementById("toast");
-  t.innerText = text;
-  t.classList.add("show");
-
-  setTimeout(() => {
-    t.classList.remove("show");
-  }, 2000);
+function copyConfig(){
+  navigator.clipboard.writeText(JSON.stringify(config, null, 2));
+  const toast = document.getElementById("toast");
+  toast.classList.add("show");
+  setTimeout(()=>toast.classList.remove("show"), 1500);
 }
 
 </script>
