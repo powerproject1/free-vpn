@@ -170,100 +170,461 @@ transform:translateX(-50%) translateY(0);
 
 // ===== CONFIG =====
 const config = {
-  burstObservatory: {
-    pingConfig: {
-      connectivity: "",
-      destination: "http://www.gstatic.com/generate_204",
-      interval: "2m",
-      sampling: 3,
-      timeout: "3s"
-    },
-    subjectSelector: ["proxy"]
-  },
-  dns: {
-    hosts: {
-      "cloudflare-dns.com": "1.1.1.1",
-      "dns.google": "8.8.8.8"
-    },
-    queryStrategy: "UseIPv4",
-    servers: [
-      "https://cloudflare-dns.com/dns-query",
-      {
-        address: "https://cloudflare-dns.com/dns-query",
-        domains: []
-      },
-      {
-        address: "https://dns.google/dns-query",
-        domains: ["domain:.ru","domain:.xn--p1ai"]
-      }
+  {
+  "dns": {
+    "queryStrategy": "UseIPv4",
+    "servers": [
+      "8.8.8.8",
+      "8.8.4.4"
     ]
   },
-  inbounds: [
+  "inbounds": [
     {
-      listen: "127.0.0.1",
-      port: 10808,
-      protocol: "socks",
-      settings: { auth: "noauth", udp: true, userLevel: 8 },
-      sniffing: { destOverride: ["http","tls","quic"], enabled: true },
-      tag: "socks"
+      "listen": "127.0.0.1",
+      "port": 10808,
+      "protocol": "socks",
+      "settings": {
+        "auth": "noauth",
+        "udp": true
+      },
+      "sniffing": {
+        "destOverride": [
+          "http",
+          "tls",
+          "quic"
+        ],
+        "enabled": true,
+        "routeOnly": false
+      },
+      "tag": "socks"
     },
     {
-      listen: "127.0.0.1",
-      port: 10809,
-      protocol: "http",
-      settings: { userLevel: 8 },
-      sniffing: { destOverride: ["http","tls","quic"], enabled: true },
-      tag: "http"
-    },
-    {
-      listen: "127.0.0.1",
-      port: 11111,
-      protocol: "dokodemo-door",
-      settings: { address: "127.0.0.1" },
-      tag: "metrics_in"
+      "listen": "127.0.0.1",
+      "port": 10809,
+      "protocol": "http",
+      "settings": {
+        "auth": "noauth",
+        "udp": true
+      },
+      "sniffing": {
+        "destOverride": [
+          "http",
+          "tls",
+          "quic"
+        ],
+        "enabled": true,
+        "excludedDomains": [],
+        "metadataOnly": false,
+        "routeOnly": true
+      },
+      "tag": "http"
     }
   ],
-  log: { loglevel: "warning" },
-  meta: null,
-  metrics: { tag: "metrics_out" },
-  outbounds: [
+  "log": {
+    "access": "",
+    "error": "",
+    "loglevel": "warning"
+  },
+  "observatory": {
+    "enableConcurrency": true,
+    "probeInterval": "60m",
+    "probeURL": "https://cloudflare.com/cdn-cgi/trace",
+    "subjectSelector": [
+      "proxy-youtube-604",
+      "proxy-youtube-389",
+      "proxy-youtube-385",
+      "proxy-vless-reality-783",
+      "proxy-vless-reality-328",
+      "proxy-vless-reality-623"
+    ]
+  },
+  "outbounds": [
     {
-      protocol: "vless",
-      settings: {
-        vnext: [
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
           {
-            address: "2.26.82.219",
-            port: 443,
-            users: [
+            "address": "201.51.7.82",
+            "port": 443,
+            "users": [
               {
-                encryption: "none",
-                flow: "xtls-rprx-vision",
-                id: "eb0b8252-5d78-46fc-9154-7005e3a150c6"
+                "alterId": 0,
+                "email": "https://gozargah.github.io/marzban/",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision",
+                "id": "33de2596-d95d-412b-a8c2-410be7060ca3",
+                "security": "auto"
               }
             ]
           }
         ]
       },
-      streamSettings: {
-        network: "tcp",
-        realitySettings: {
-          fingerprint: "firefox",
-          publicKey: "W9co3pXpjBKJ71a0c3CUm-xEYKRr5N_Da6VHfWnmxTo",
-          serverName: "nl5.cyphervpn.pro",
-          shortId: "8e3962faa693e66c"
+      "streamSettings": {
+        "network": "tcp",
+        "realitySettings": {
+          "fingerprint": "firefox",
+          "publicKey": "SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc",
+          "serverName": "de.sellflow.org",
+          "show": false
         },
-        security: "reality",
-        tcpSettings: {}
+        "security": "reality"
       },
-      tag: "proxy"
+      "tag": "proxy-vless-reality-783",
+      "targetStrategy": "ForceIPv4"
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "201.51.6.59",
+            "port": 443,
+            "users": [
+              {
+                "alterId": 0,
+                "email": "https://gozargah.github.io/marzban/",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision",
+                "id": "33de2596-d95d-412b-a8c2-410be7060ca3",
+                "security": "auto"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "realitySettings": {
+          "fingerprint": "firefox",
+          "publicKey": "SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc",
+          "serverName": "de.sellflow.org",
+          "show": false
+        },
+        "security": "reality"
+      },
+      "tag": "proxy-vless-reality-328",
+      "targetStrategy": "ForceIPv4"
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "201.51.8.11",
+            "port": 443,
+            "users": [
+              {
+                "alterId": 0,
+                "email": "https://gozargah.github.io/marzban/",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision",
+                "id": "33de2596-d95d-412b-a8c2-410be7060ca3",
+                "security": "auto"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "realitySettings": {
+          "fingerprint": "firefox",
+          "publicKey": "SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc",
+          "serverName": "de.sellflow.org",
+          "show": false
+        },
+        "security": "reality"
+      },
+      "tag": "proxy-vless-reality-623",
+      "targetStrategy": "ForceIPv4"
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "147.45.213.95",
+            "port": 443,
+            "users": [
+              {
+                "alterId": 0,
+                "email": "https://gozargah.github.io/marzban/",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision",
+                "id": "33de2596-d95d-412b-a8c2-410be7060ca3",
+                "security": "auto"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "realitySettings": {
+          "fingerprint": "firefox",
+          "publicKey": "SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc",
+          "serverName": "sellflow.org",
+          "show": false
+        },
+        "security": "reality"
+      },
+      "tag": "proxy-youtube-604",
+      "targetStrategy": "ForceIPv4"
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "72.56.32.211",
+            "port": 443,
+            "users": [
+              {
+                "alterId": 0,
+                "email": "https://gozargah.github.io/marzban/",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision",
+                "id": "33de2596-d95d-412b-a8c2-410be7060ca3",
+                "security": "auto"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "realitySettings": {
+          "fingerprint": "firefox",
+          "publicKey": "SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc",
+          "serverName": "sellflow.org",
+          "show": false
+        },
+        "security": "reality"
+      },
+      "tag": "proxy-youtube-389",
+      "targetStrategy": "ForceIPv4"
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "185.197.75.72",
+            "port": 443,
+            "users": [
+              {
+                "alterId": 0,
+                "email": "https://gozargah.github.io/marzban/",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision",
+                "id": "33de2596-d95d-412b-a8c2-410be7060ca3",
+                "security": "auto"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "realitySettings": {
+          "fingerprint": "firefox",
+          "publicKey": "SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc",
+          "serverName": "sellflow.org",
+          "show": false
+        },
+        "security": "reality"
+      },
+      "tag": "proxy-youtube-385",
+      "targetStrategy": "ForceIPv4"
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "201.51.8.11",
+            "port": 443,
+            "users": [
+              {
+                "alterId": 0,
+                "email": "https://gozargah.github.io/marzban/",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision",
+                "id": "33de2596-d95d-412b-a8c2-410be7060ca3",
+                "security": "auto"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "realitySettings": {
+          "fingerprint": "firefox",
+          "publicKey": "SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc",
+          "serverName": "ai.sellflow.org",
+          "show": false
+        },
+        "security": "reality"
+      },
+      "tag": "proxy-chatgpt",
+      "targetStrategy": "ForceIPv4"
+    },
+    {
+      "protocol": "freedom",
+      "tag": "direct",
+      "targetStrategy": "ForceIPv4"
+    },
+    {
+      "protocol": "blackhole",
+      "tag": "block"
     }
   ],
-  policy: {},
-  remarks: "BOOSTX VPN",
-  routing: { balancers: [], rules: [] },
-  stats: {}
-};
-
+  "remarks": "🇩🇪 BOOSTX Германия",
+  "routing": {
+    "balancers": [
+      {
+        "fallbackTag": "proxy-vless-reality-783",
+        "selector": [
+          "proxy-vless-reality-783",
+          "proxy-vless-reality-328",
+          "proxy-vless-reality-623"
+        ],
+        "strategy": {
+          "type": "roundRobin"
+        },
+        "tag": "balancer"
+      },
+      {
+        "fallbackTag": "proxy-youtube-604",
+        "selector": [
+          "proxy-youtube-604",
+          "proxy-youtube-389",
+          "proxy-youtube-385"
+        ],
+        "strategy": {
+          "type": "roundRobin"
+        },
+        "tag": "balancer-youtube"
+      }
+    ],
+    "domainStrategy": "IPIfNonMatch",
+    "rules": [
+      {
+        "domain": [
+          "geosite:youtube"
+        ],
+        "network": "udp",
+        "outboundTag": "block",
+        "port": "443",
+        "type": "field"
+      },
+      {
+        "balancerTag": "balancer-youtube",
+        "domain": [
+          "geosite:youtube"
+        ]
+      },
+      {
+        "domain": [
+          "domain:chatgpt.com",
+          "domain:openai.com",
+          "geosite:google-gemini",
+          "domain:grok.com",
+          "domain:x.ai"
+        ],
+        "outboundTag": "proxy-chatgpt"
+      },
+      {
+        "network": "udp",
+        "outboundTag": "block",
+        "port": "443"
+      },
+      {
+        "domain": [
+          "domain:api.hirovpn.com",
+          "domain:downloadhiro.app",
+          "domain:sellflow.org",
+          "domain:newlenta24.online",
+          "domain:infomagazine.space",
+          "domain:rocketnews.site",
+          "domain:pitertv24.ru",
+          "domain:moscownews24.ru",
+          "domain:sportvideo24.ru",
+          "domain:anker-beton.ru",
+          "domain:krym-toury.ru",
+          "domain:tvnews7.ru",
+          "domain:hirovpnfreetgproxy.ru"
+        ],
+        "outboundTag": "direct"
+      },
+      {
+        "balancerTag": "balancer",
+        "domain": [
+          "geosite:whatsapp",
+          "geosite:discord"
+        ]
+      },
+      {
+        "balancerTag": "balancer",
+        "ip": [
+          "geoip:telegram"
+        ]
+      },
+      {
+        "balancerTag": "balancer",
+        "network": "udp",
+        "port": "3478-3497,4244,5242-5243,7985"
+      },
+      {
+        "balancerTag": "balancer",
+        "domain": [
+          "domain:payload.network",
+          "domain:2ip.ru",
+          "domain:2ip.to",
+          "domain:myip.ru",
+          "domain:internet.yandex.ru",
+          "domain:ip.nic.ru",
+          "domain:reg.ru",
+          "domain:pr-cy.ru",
+          "domain:2whois.ru",
+          "domain:yoip.ru",
+          "domain:ipsee.ru",
+          "domain:ip-ping.ru",
+          "domain:sweb.ru"
+        ]
+      },
+      {
+        "domain": [
+          "domain:2ch.hk",
+          "domain:2ch.org",
+          "domain:2ch.su"
+        ],
+        "outboundTag": "direct"
+      },
+      {
+        "domain": [
+          "domain:ru"
+        ],
+        "ip": [
+          "geoip:ru",
+          "geoip:private"
+        ],
+        "outboundTag": "direct"
+      },
+      {
+        "balancerTag": "balancer",
+        "port": "22,25,53,80,110,123,143,443,465,587,993,995,5222,5223,5228,8000,8080,8443",
+        "type": "field"
+      },
+      {
+        "balancerTag": "balancer",
+        "network": "tcp,udp",
+        "type": "field"
+      }
+    ]
+  }
+}
 const FULL = JSON.stringify(config, null, 2);
 
 document.getElementById("preview").innerText = FULL;
